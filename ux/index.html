@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+
+</style>
+<link rel="stylesheet" type="text/css" href="drawingboard.min.css" />
+<link rel="stylesheet" type="text/css" href="contentStyle.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var clicks1 = 0, clicks2 = 0, clicks3 = 0, clicks4 = 0, clicks5 = 0;
+    function onClick1() {
+        clicks1 += 1;
+        document.getElementById("tooslow").innerHTML = clicks1;
+    };
+	function onClick2() {
+        clicks2 += 1;
+        document.getElementById("moredetail").innerHTML = clicks2;
+    };
+	function onClick3() {
+        clicks3 += 1;
+        document.getElementById("confused").innerHTML = clicks3;
+    };
+	function onClick4() {
+        clicks4 += 1;
+        document.getElementById("needclar").innerHTML = clicks4;
+    };
+    function onClick5() {
+        clicks5 += 1;
+        document.getElementById("thumbsup").innerHTML = clicks5;
+    };
+    </script>
+<body>
+
+<!--overview-->
+<iframe id="overview" src="https://prezi.com/view/aPfNWwZOQA5ulXXHKO0f/embed" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe> 
+
+<!--slide-->
+<div id="title-board"></div>
+<iframe id="center" src="https://docs.google.com/presentation/d/1nhY1TPSL-iynJKN50dx4y-RuogfOYSjXA9A12o70QM0/embed?start=false&loop=true&delayms=3000000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<!--chatroom-->
+<iframe id="chatroom" src="https://tlk.io/chat-ux"></iframe>
+
+<div id="outer">
+    <div class="inner"><img src="slow.jpeg" alt="some_text" style="width: 90px;height:90px;"><br></br><button type="button" onClick="onClick1()">Too slow</button> <p>Count: <a id="tooslow">0</a></p></div>
+	<div class="inner"><img src="moredetail.jpeg" alt="some_text" style="width: 90px;height:90px;"><br></br><button type="button" onClick="onClick2()">More detail required</button> <p>Count: <a id="moredetail">0</a></p></div>
+	<div class="inner"><img src="confused.jpeg" alt="some_text" style="width: 90px;height:90px;"><br></br><button type="button" onClick="onClick3()">Confused</button> <p>Count: <a id="confused">0</a></p></div>
+	<div class="inner"><img src="fast.jpeg" alt="some_text" style="width: 90px;height:90px;"><br></br><button type="button" onClick="onClick4()">Too fast</button> <p>Count: <a id="needclar">0</a></p></div>
+	<div class="inner"><img src="thumbsup.jpg" alt="some_text" style="width: 90px;height:90px;"><br></br><button type="button" onClick="onClick5()">Like</button> <p>Count: <a id="thumbsup">0</a></p></div>
+</div>
+
+<script type="text/javascript" src="drawingboard.min.js"></script>
+<script type="text/javascript">
+	var imageBoard = new DrawingBoard.Board('title-board', {
+		controls: [
+			{ Size: { type: "range" } },
+			{ Navigation: { back: true, forward: true } },
+			'DrawingMode'
+		],
+		background: 'grid.gif',
+		color: '#f00',
+		webStorage: false
+	});
+	//imageBoard.addControl('Download');
+</script>
+</body>
+</html>

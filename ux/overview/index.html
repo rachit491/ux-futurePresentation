@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+body {
+    margin: 0.5%;
+    overflow: hidden;
+}
+#holder {
+    height: 775px;
+    width: 100%;
+}
+#overview {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#overlay {
+    position: absolute;
+    top: 0px;
+    width: 99%;
+    height: 775px;
+    margin-top: 0.5%;
+    z-index: 5;
+    pointer-events: none;
+}
+span {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 0;
+    left: 0;
+}
+</style>
+<script type="text/javascript">
+    var colors = ["#fff", "#f00", "#ff8000", "#ff0", "#80ff00", "#0f0", "#00ff80", "#0ff", "#00f", "#7f00ff", "#f0f", "#ff07ff", "#808080", "#e0e0e0", "#ccf"];
+    var pos = [{x: 75, y: 545},{x: 73, y: 600},{x: 75, y: 620},
+                {x: 55, y: 350},{x: 59, y: 380},{x: 55, y: 400},
+                {x: 63, y: 420},{x: 65, y: 440},{x: 67, y: 435},
+                {x: 30, y: 480},{x: 32, y: 460},{x: 32, y: 530},
+                {x: 25, y: 200},{x: 20, y: 210},{x: 20, y: 300},{x: 25, y: 300},
+                {x: 70, y: 160},{x: 75, y: 200},{x: 75, y: 250},
+                {x: 50, y: 190},{x: 52, y: 200},{x: 52, y: 260},
+                {x: 47, y: 390},{x: 50, y: 460},{x: 50, y: 395}]
+    
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function setPositions(icons) {
+        
+    }
+    function showIcons() {
+        for(var i=0; i<15; i++) {
+            var icons = document.createElement("span");
+            icons.id = "icons-"+i;
+            no = getRandomIntInclusive(0, pos.length);
+            icons.style.left = pos[no].x + "%";
+            icons.style.top = pos[no].y + "px";
+            icons.style.background = colors[i];
+            document.getElementById('overlay').appendChild(icons);
+        }
+
+        setTimedMovement();
+    }
+
+    function setTimedMovement() {   
+        window.setInterval(function() {
+            var no = Math.floor(Math.random() * (15));
+            var icon = document.getElementById("icons-"+no);
+            no = Math.floor(Math.random() * (pos.length));;
+            icon.style.left = pos[no].x + "%";
+            icon.style.top = pos[no].y + "px";
+        }, 3500);
+    }
+</script>
+
+<body onload="showIcons()">
+
+<div id="holder">
+    <!--overview-->
+    <iframe id="overview" src="https://prezi.com/view/aPfNWwZOQA5ulXXHKO0f/embed" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe> 
+
+    <div id="overlay"></div>
+</div>
+
+</body>
+</html>
+
